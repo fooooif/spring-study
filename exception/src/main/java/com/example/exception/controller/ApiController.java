@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 
 @RestController
 @RequestMapping("/api/user")
-@Validated
+@Validated //제약조건에 대한 그룹을 만들어 적용
 public class ApiController {
 
 

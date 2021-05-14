@@ -101,7 +101,7 @@ public class ApiControllerAdvice {
     }
 
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
-    public ResponseEntity issingServletRequestParameterException(MissingServletRequestParameterException e, HttpServletRequest httpServletRequest) {
+    public ResponseEntity missingServletRequestParameterException(MissingServletRequestParameterException e, HttpServletRequest httpServletRequest) {
 
         List<Error> errorList = new ArrayList<>();
 
@@ -123,5 +123,9 @@ public class ApiControllerAdvice {
         errorResponse.setStatusCode(HttpStatus.BAD_REQUEST.toString());
         errorResponse.setResultCode("FAIL");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+
+
+
+
     }
 }
