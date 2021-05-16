@@ -48,4 +48,12 @@ public class GlobalFilter implements Filter {
 
         log.info("response status : {}, responseBody : {}",httpStatus, resContent);
     }
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+    @Override
+    public void destroy() {
+        log.info("filter destroy");
+    }
 }
