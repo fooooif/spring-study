@@ -14,17 +14,25 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Appconfig {
 
+
+    //@Bean memberService -> new MemoryMemberReposiory();
+    //@Bean orderService -> new MemoryMemberReposiory();
     @Bean
     public MemberService memberService(){
+        System.out.println("Appconfig.memberService");
         return new MemberServiceImpl(memerRepository());
     }
     @Bean
     public MemberRepository memerRepository() {
+
+        System.out.println("Appconfig.memerRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
+
+        System.out.println("Appconfig.orderService");
         return new OrderServiceImpl(memerRepository(),discountPolicy());
     }
     @Bean
