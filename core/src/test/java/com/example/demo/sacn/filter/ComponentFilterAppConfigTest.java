@@ -25,7 +25,7 @@ public class ComponentFilterAppConfigTest {
                 NoSuchBeanDefinitionException.class,
                 () -> ac.getBean("beanB", BeabB.class));
     }
-    //FilterType.ANNOTATION 생략가능
+    //FilterType.ANNOTATION 생략가
     @Configuration
     @ComponentScan(
             includeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
