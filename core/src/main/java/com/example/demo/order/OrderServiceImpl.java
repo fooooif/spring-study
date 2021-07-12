@@ -4,16 +4,19 @@ import com.example.demo.discount.DiscountPolicy;
 
 import com.example.demo.member.Member;
 import com.example.demo.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 //스프링 빈에만 자동의존주입 가능!!
 
-
+@RequiredArgsConstructor
 @Component
 public class OrderServiceImpl implements OrderService{
+
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
 
 
     //필드 주입!!!!! not recmmend 밖에서 수정할 방법이 없으므로 setter 만들어줘야함!!!! 테스트 코드에서만 쓰는걸 권장함!
@@ -37,11 +40,11 @@ public class OrderServiceImpl implements OrderService{
 //        this.memberRepository = memberRepository;
 //    }
     //생성자가 하나 있으면 Autowired 생략 가능
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
