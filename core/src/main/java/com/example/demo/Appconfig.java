@@ -20,10 +20,10 @@ public class Appconfig {
     @Bean
     public MemberService memberService(){
         System.out.println("Appconfig.memberService");
-        return new MemberServiceImpl(memerRepository());
+        return new MemberServiceImpl(memberRepository());
     }
     @Bean
-    public MemberRepository memerRepository() {
+    public MemberRepository memberRepository() {
 
         System.out.println("Appconfig.memerRepository");
         return new MemoryMemberRepository();
@@ -33,7 +33,7 @@ public class Appconfig {
     public OrderService orderService(){
 
         System.out.println("Appconfig.orderService");
-        return new OrderServiceImpl(memerRepository(),discountPolicy());
+        return new OrderServiceImpl(memberRepository(),discountPolicy());
     }
     @Bean
     public DiscountPolicy discountPolicy(){
