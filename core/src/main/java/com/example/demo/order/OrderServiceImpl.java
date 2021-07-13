@@ -1,5 +1,6 @@
 package com.example.demo.order;
 
+import com.example.demo.annotation.MainDiscountPolicy;
 import com.example.demo.discount.DiscountPolicy;
 
 import com.example.demo.member.Member;
@@ -42,7 +43,7 @@ public class OrderServiceImpl implements OrderService{
     //생성자가 하나 있으면 Autowired 생략 가능
     //@Autowired는 타입 매칭을 시도하고, 이떄 여러 빈이 있으면 필드 이름, 파라미터 이름으로 빈 이름을 추가 매칭한다.
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository,@MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
