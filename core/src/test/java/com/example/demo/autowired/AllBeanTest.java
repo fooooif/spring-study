@@ -8,7 +8,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 import java.util.Map;
@@ -32,7 +31,6 @@ public class AllBeanTest {
     static class DiscountService{
         private final Map<String, DiscountPolicy> policyMap;
         private final List<DiscountPolicy> policies;
-
         @Autowired
         public DiscountService(Map<String, DiscountPolicy> policyMap, List<DiscountPolicy> policies) {
             this.policies = policies;
