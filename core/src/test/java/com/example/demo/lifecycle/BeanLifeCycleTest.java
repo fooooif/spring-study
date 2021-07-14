@@ -21,7 +21,8 @@ public class BeanLifeCycleTest {
     //객체 생성과 초기화(동작)는 따로 해야한다.!
     @Configuration
     static class LifeCycleConfig{
-        @Bean(initMethod = "init",destroyMethod = "close")
+//        @Bean(initMethod = "init",destroyMethod = "close")
+        @Bean
         public NetworkClient networkClient(){
             NetworkClient networkClient = new NetworkClient();//생성?
             networkClient.setUrl("http://hello-spring.dev");
