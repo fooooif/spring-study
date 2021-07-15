@@ -15,14 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 public class LogDemoController {
 
     private final LogDemoService logDemoService;
-
-    private final Provider<MyLogger> myLoggerProvider;
+//    private final Provider<MyLogger> myLoggerProvider;
+    private final MyLogger myLogger;
 
     @RequestMapping("log-demo")
     @ResponseBody
     public String logDemo(HttpServletRequest request) throws InterruptedException {
-        MyLogger myLogger = myLoggerProvider.get();
+//        MyLogger myLogger = myLoggerProvider.get();
         String s = request.getRequestURL().toString();
+        System.out.println("mylogger = "+ myLogger.getClass());
         myLogger.setRequestURL(s);
 
 
