@@ -1,0 +1,20 @@
+spring:
+#  datasource:
+#    url: jdbc:h2:mem:test #inmemory로 동작!
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    properties:
+#      hibernate:
+##        show_sql: true
+#        format_sql: true
+#    org.hibernate.SQL: debug
+
+
+logging.level: #띄어쓰기 없음
+  org.hibernate.SQL: debug #띄어쓰기
+  org.hibernate.type: trace
