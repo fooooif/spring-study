@@ -1,5 +1,4 @@
 package jpabook.jpashop;
-
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,11 +22,11 @@ public class MemberRepositoryTest {
     public void testMember() throws Exception{
         //given
 
-        Member member = new Member();
+        Member_test member = new Member_test();
         member.setUsername("memberA");
         //when
         Long saveID = memberRepository.save(member);
-        Member findMember = memberRepository.find(saveID);
+        Member_test findMember = memberRepository.find(saveID);
 
         //then
         Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
