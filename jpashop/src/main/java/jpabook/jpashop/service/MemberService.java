@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = true) // 데이터 변경은 transactional(readOnlty = false)가 있어야 한다.!!!!!
 @RequiredArgsConstructor
 public class MemberService {
 

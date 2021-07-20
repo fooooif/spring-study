@@ -61,5 +61,4 @@ public class MemberServiceTest {
         Assertions.fail("예외가 발생해야 한다.");
     }
 
-
 }
