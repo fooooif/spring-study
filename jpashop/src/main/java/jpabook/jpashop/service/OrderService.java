@@ -27,7 +27,7 @@ public class OrderService {
      * 주문
      */
     @Transactional
-    //단순 조회 및 호출 하는거 도메인 모델 패턴
+    //단순 조회 및 호출 하는거 도메인 모델 패
     //배송정보 생성 주문상품 생성하였지만 주문만 저장하는 이유는 order에서만 주문 상품,delivery를 사용해서 lifecycle이 똑같아서 persist 같이 해주면 된다.!!!!
     public Long order(Long memberId, Long itemId, int count) {
 
@@ -53,6 +53,7 @@ public class OrderService {
     /**
      * 주문 취소
      * @param orderId
+     *
      */
     @Transactional
     public void cancleOrder(Long orderId) {
