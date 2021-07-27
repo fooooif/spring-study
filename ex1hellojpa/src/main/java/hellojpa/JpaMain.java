@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
+
 public class JpaMain {
     public static void main(String[] args) {
         //로딩 시점에 딱 하나만 만들기!!!!!
@@ -21,24 +22,17 @@ public class JpaMain {
         /**
          * 시작
          */
+
         transaction.begin();
         try {
-            //비영속!
             Member member = new Member();
-            member.setName("HelloJPA");
-            member.setId(1L);
-            //영속!
+            member.setId(3L);
+            member.setUsername("B");
+            member.setRoleType(RoleType.ADMIN);
 
             em.persist(member);
-            //준영속!
-            em.detach(member);
-            //삭제!
-            em.remove(member);
-
-
 
             transaction.commit();
-
         } catch (Exception e) {
             transaction.rollback();
         }
