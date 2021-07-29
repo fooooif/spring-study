@@ -22,12 +22,22 @@ public class JpaMain {
         /**
          * 시작
          */
-
         transaction.begin();
         try {
             Member member = new Member();
-            member.setName("Zaa");
+            member.setName("A");
+            Member member1 = new Member();
+            member1.setName("B");
+            Member member2 = new Member();
+            member2.setName("C");
+            Member member3 = new Member();
+            member3.setName("D");
             em.persist(member);
+            em.persist(member1);
+            em.persist(member2);
+            em.persist(member3);
+
+            System.out.println("============= ");
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
