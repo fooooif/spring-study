@@ -1,7 +1,8 @@
 package jpabook.jpashop;
 
 
-import jpabook.jpashop.domain.*;
+
+import jpabook.jpashop.inheritence.Movie;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,16 +18,12 @@ public class JpaMain {
         ts.begin();
 
         try {
-
-            Member1 member1 = new Member1();
-            member1.setUsername("member1");
-            em.persist(member1);
-
-            Team1 team = new Team1();
-            team.setName("teamA");
-            team.getMembers().add(member1);
-
-            em.persist(team);
+            Movie movie = new Movie();
+            movie.setActor("actor1");
+            movie.setDirector("director1");
+            movie.setName("바람과 함꼐사라지다.");
+            movie.setPrice(10000);
+            em.persist(movie);
             ts.commit();
         } catch (Exception e) {
 

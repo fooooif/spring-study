@@ -1,13 +1,15 @@
-package jpabook.jpashop.domain;
-
+package jpabook.jpashop.testdomain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GeneratorType;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,7 +18,6 @@ public class Item {
 
     @Id
     @GeneratedValue
-    @Column(name = "ITME_ID")
     private Long id;
 
     private String name;
@@ -24,6 +25,9 @@ public class Item {
     private int price;
 
     private int stockQuantity;
+
+//    @ManyToMany(mappedBy = "items")
+//    private List<Category> categories = new ArrayList<>();
 
 
 }

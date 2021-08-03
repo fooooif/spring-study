@@ -1,4 +1,4 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.testdomain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,17 +8,15 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class OrderItem {
+public class Order_Item {
 
     @Id
     @GeneratedValue
-    @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ORDER_ID")
-    private Order order;
-
+    @JoinColumn(name = "ORDERS_ID")
+    private Orders orders;
 
     @ManyToOne
     @JoinColumn(name = "ITEM_ID")
