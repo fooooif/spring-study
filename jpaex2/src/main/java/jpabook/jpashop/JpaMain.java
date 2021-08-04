@@ -21,10 +21,27 @@ public class JpaMain {
         ts.begin();
 
         try {
-            Book book = new Book();
-            book.setName("jpa");
-            book.setAuthor("안녕");
-            em.persist(book);
+
+            Member member1 = new Member();
+            member1.setCreatedDate(LocalDateTime.now());
+            member1.setLastModifiedBy("Aaa");
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setCreatedDate(LocalDateTime.now());
+            member2.setLastModifiedBy("ddd");
+            em.persist(member2);
+            em.flush();
+            em.clear();
+            /*
+            getReference를 쓰면 query가 안나감. 가짜 클래스다!!
+             */
+//            Member reference = em.getReference(Member.class, member.getId());
+            Member m1 = em.find(Member.class, member1.getId());
+            Member m2 = em.getReference(Member.class, member2.getId());
+
+            //타입 비교 == 으로 하지말기
+            System.out.println("m1 == m2 " + (m1.getClass() == m2.getClass()));
 
             ts.commit();
         } catch (Exception e) {
@@ -35,4 +52,10 @@ public class JpaMain {
         }
         emf.close();
     }
+
+    private static void printMemberAndTeam(Member member) {
+
+    }
+
+
 }
