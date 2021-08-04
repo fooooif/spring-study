@@ -8,13 +8,13 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn
-@Table(name = "ITEM2")
-public class Item {
+public abstract class Item extends BaseEntity{
 
     @Id
     @GeneratedValue
+    @Column(name = "ITEM_ID")
     private Long id;
     private String name;
     private int price;
