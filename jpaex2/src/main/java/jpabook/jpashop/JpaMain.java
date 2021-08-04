@@ -5,6 +5,7 @@ package jpabook.jpashop;
 import jpabook.jpashop.inheritence.Book;
 import jpabook.jpashop.inheritence.Member;
 import jpabook.jpashop.inheritence.Movie;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ public class JpaMain {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
+
 
         EntityTransaction ts = em.getTransaction();
 
@@ -37,15 +39,23 @@ public class JpaMain {
             getReference를 쓰면 query가 안나감. 가짜 클래스다!!
              */
 //            Member reference = em.getReference(Member.class, member.getId());
-            Member m1 = em.find(Member.class, member1.getId());
-            Member m2 = em.getReference(Member.class, member2.getId());
+//            Member refMember = em.getReference(Member.class, member2.getId());
+//            em.detach(refMember);
+//
+//
+//            System.out.println(refMember.getCreatedBy());
+            // 한 트랜잭션 안에서는 == 으로 해주면 true가 나와야 한다.!!!
+//           System.out.println("m1 == m2 " + (m2 instanceof Member));
 
-            //타입 비교 == 으로 하지말기
-            System.out.println("m1 == m2 " + (m1.getClass() == m2.getClass()));
 
+            Member reference = em.getReference(Member.class, member1.getId());
+
+            Hibernate.initialize(reference); // 강제 초기화!!!
+            System.out.println(emf.getPersistenceUnitUtil().isLoaded(reference));
             ts.commit();
         } catch (Exception e) {
-
+            ts.rollback();
+            e.printStackTrace();
         }
         finally {
             em.close();
