@@ -2,14 +2,11 @@ package jpabook.jpashop;
 
 
 
-import jpabook.jpashop.inheritence.Book;
 import jpabook.jpashop.inheritence.Member;
-import jpabook.jpashop.inheritence.Movie;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class JpaMain {
 
@@ -23,7 +20,6 @@ public class JpaMain {
         ts.begin();
 
         try {
-
             Member member1 = new Member();
             member1.setCreatedDate(LocalDateTime.now());
             member1.setLastModifiedBy("Aaa");
