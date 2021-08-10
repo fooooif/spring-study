@@ -1,9 +1,12 @@
 package jpabook.jpashop;
-import jpabook.jpashop.inheritence.*;
+import jpabook.jpashop.domain.Address;
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.MemberDto;
+import jpabook.jpashop.domain.Team;
+
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JpaMain {
 
@@ -16,12 +19,29 @@ public class JpaMain {
         ts.begin();
 
         try {
-            //자바 표준 스팩.
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Member> query = cb.createQuery(Member.class);
+            Member member = new Member();
+            member.setAge(10);
+            member.setUsername("member1");
 
-            Root<Member> from = query.from(Member.class);
-            //동적쿼리 훨씬생각하기
+            em.persist(member);
+            em.flush();
+            em.clear();
+
+            System.out.println("========================================");
+            List<MemberDto> resultList = em.createQuery("select new jpabook.jpashop.domain.MemberDto(m.username,m.age)  from Member m ", MemberDto.class)
+                    .getResultList();
+            System.out.println("========================================");
+
+            MemberDto memberDto = resultList.get(0);
+            System.out.println(memberDto.getAge());
+
+//            Object o = resultList.get(0);
+//            Object[] ob = (Object[]) o;
+//            for (Object o1 : ob) {
+//                System.out.println("o1 = " + o1);
+//            }
+//
+
 
 
             ts.commit();
