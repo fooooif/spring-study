@@ -1,15 +1,13 @@
-package jpabook.jpashop;
+package hellojpa.jpql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JpashopApplicationTests {
+class JpqlApplicationTests {
 
-
-	@Test
-	void contextLoads() {
-
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

@@ -6,6 +6,10 @@ import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -27,6 +31,7 @@ public class Member {
     private Period workperiod;
 
 
+//
     //주소.
 //    private String city;
 //    private String street;
@@ -35,16 +40,27 @@ public class Member {
     @Embedded
     private Address homeAddress;
 
+    //값타입 ㄱ컬렉션
+    @ElementCollection
+    @CollectionTable(name = "favorite_food", joinColumns =
+        @JoinColumn(name = "member_id"))
+    @Column(name = "food_name")
+    private Set<String> favoriteFoods = new HashSet<>();
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name="city",
-                    column=@Column(name = "work_city")),
-            @AttributeOverride(name="street",
-                    column=@Column(name = "work_street")),
-            @AttributeOverride(name="zipcode",
-                    column=@Column(name = "work_zipcode"))
-    })
-    private Address workAddress;
+    @ElementCollection
+    @CollectionTable(name = "address", joinColumns =
+        @JoinColumn(name = "member_id"))
+    private List<Address> addressHistory = new ArrayList<>();
+
+//    @Embedded
+//    @AttributeOverrides({
+//            @AttributeOverride(name="city",
+//                    column=@Column(name = "work_city")),
+//            @AttributeOverride(name="street",
+//                    column=@Column(name = "work_street")),
+//            @AttributeOverride(name="zipcode",
+//                    column=@Column(name = "work_zipcode"))
+//    })
+//    private Address workAddress;
 
 }
