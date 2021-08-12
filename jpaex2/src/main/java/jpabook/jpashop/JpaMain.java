@@ -19,31 +19,31 @@ public class JpaMain {
         ts.begin();
 
         try {
+
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
             Member member = new Member();
             member.setAge(10);
-            member.setUsername("member1");
-
+            member.setUsername("teamA");
+            member.changeTeam(team);
             em.persist(member);
+
+
+
+
+
             em.flush();
             em.clear();
-
-            System.out.println("========================================");
-            List<MemberDto> resultList = em.createQuery("select new jpabook.jpashop.domain.MemberDto(m.username,m.age)  from Member m ", MemberDto.class)
+            String query = "select m,t " +
+                            "from Member m left join m.team t where t.name = m.username";
+            List resultList = em.createQuery(query)
                     .getResultList();
-            System.out.println("========================================");
 
-            MemberDto memberDto = resultList.get(0);
-            System.out.println(memberDto.getAge());
+            for (Object o : resultList) {
 
-//            Object o = resultList.get(0);
-//            Object[] ob = (Object[]) o;
-//            for (Object o1 : ob) {
-//                System.out.println("o1 = " + o1);
-//            }
-//
-
-
-
+            }
             ts.commit();
         } catch (Exception e) {
             ts.rollback();
@@ -54,8 +54,5 @@ public class JpaMain {
         }
         emf.close();
     }
-
-
-
 
 }
