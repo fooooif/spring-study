@@ -38,11 +38,13 @@ public class JpaMain {
             em.clear();
             String query = "select m,t " +
                             "from Member m left join m.team t where t.name = m.username";
-            List resultList = em.createQuery(query)
+
+            List<Object[]> resultList = em.createQuery(query)
                     .getResultList();
 
-            for (Object o : resultList) {
-
+            for (Object[] objects : resultList) {
+                System.out.println(objects[0]);
+                System.out.println(objects[1]);
             }
             ts.commit();
         } catch (Exception e) {

@@ -15,6 +15,7 @@ public class RequestHeaderServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         printStartLine(request);
         printHeaders(request);
+        printHeaderUtils(request);
     }
 
     private void printStartLine(HttpServletRequest request) {
@@ -68,6 +69,8 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("request.getLocale() = " + request.getLocale());
         System.out.println();
 
+
+        //cookie 로그인 정보.
         System.out.println("[cookie 편의 조회]");
         if (request.getCookies() != null) {
             for (Cookie cookie : request.getCookies()) {
