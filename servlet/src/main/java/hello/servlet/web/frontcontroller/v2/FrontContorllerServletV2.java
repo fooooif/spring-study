@@ -20,14 +20,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "frontContorllerServletV2", urlPatterns = "/front-controller/v1/*")
+@WebServlet(name = "frontContorllerServletV2", urlPatterns = "/front-controller/v2/*")
 public class FrontContorllerServletV2 extends HttpServlet {
     private Map<String, ControllerV2> controllerV2Map = new HashMap();
 
     public FrontContorllerServletV2() {
-        controllerV2Map.put("/front-controller/v1/members/new-form", new MemberFormControllerV2());
-        controllerV2Map.put("/front-controller/v1/members/save", new MemberSaveControllerV2());
-        controllerV2Map.put("/front-controller/v1/members", new MemberListControllerV2());
+        controllerV2Map.put("/front-controller/v2/members/new-form", new MemberFormControllerV2());
+        controllerV2Map.put("/front-controller/v2/members/save", new MemberSaveControllerV2());
+        controllerV2Map.put("/front-controller/v2/members", new MemberListControllerV2());
 
     }
 
