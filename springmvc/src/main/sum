@@ -18,3 +18,9 @@ private final Logger log = LoggerFactory.getLogger(getClass());
 trace로그를 쓰지 않는데 먼저 더해
 준다 따라서 쓸모없는 연산을 수행
 log.trace("trace log = "+ name);
+
+세가지 다 같은 거임
+단순타입이면 @RequestParam 생략가능하다!!!
+@RequestParam(name = "username") String memberName
+@RequestParam String username
+String username
