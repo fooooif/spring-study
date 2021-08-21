@@ -1,7 +1,11 @@
 package hello.springmvc.basic.requestmapping.request;
 
+import hello.springmvc.basic.HelloData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -56,10 +61,61 @@ public class RequestParamController {
     @ResponseBody
     @RequestMapping("/request-param-required")
     public String requiredParm(@RequestParam(required = false) String username,
-                                @RequestParam(required = false) Integer age) {
+                               @RequestParam(required = false) Integer age) {
         //int는 null이 안되기떄문
+        //null 이랑 ""이거랑 다른거임!! 조심해야함!!!
         log.info("username = {} , age = {}", username, age);
 
         return "ok";
     }
+
+    @ResponseBody
+    @RequestMapping("/request-param-default")
+    public String requiredParmDefault(@RequestParam(defaultValue = "guest") String username,
+                                      @RequestParam(required = false, defaultValue = "-1") int age) {
+        //int는 null이 안되기떄문
+        //null 이랑 ""이거랑 다른거임!! 조심해야함!!!
+        log.info("username = {} , age = {}", username, age);
+
+        return "ok";
+    }
+
+    @ResponseBody
+    @RequestMapping("/request-param-map")
+    public String requestParmmap(@RequestParam Map<String, Object> paramMap) {
+        //int는 null이 안되기떄문
+        //null 이랑 ""이거랑 다른거임!! 조심해야함!!!
+        log.info("username = {} , age = {}", paramMap.get("username"), paramMap.get("age"));
+
+        return "ok";
+    }
+
+    @ResponseBody
+    @RequestMapping("/request-param-multimap")
+    public String requestParmultimap(@RequestParam MultiValueMap<String, Object> paramMap) {
+        //int는 null이 안되기떄문
+        //null 이랑 ""이거랑 다른거임!! 조심해야함!!!
+        log.info("username = {} , age = {}", paramMap.get("username"), paramMap.get("age"));
+
+        return "ok";
+    }
+
+    @ResponseBody
+    @RequestMapping("/model-attribute-v1")
+    public String modelAttributeV1(@ModelAttribute HelloData helloData) {
+
+        log.info("helloDate = {}", helloData);
+
+        return "ok";
+    }
+
+    @ResponseBody
+    @RequestMapping("/model-attribute-v2")
+    public String modelAttributeV2(HelloData helloData) {
+
+        log.info("helloDate = {}", helloData);
+
+        return "ok";
+    }
 }
+

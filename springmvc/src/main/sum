@@ -24,3 +24,13 @@ log.trace("trace log = "+ name);
 @RequestParam(name = "username") String memberName
 @RequestParam String username
 String username
+
+단순타입 @RequestParam
+객체 @ModelAttribute
+하지만 argument resolver로 지정해둔 타입은 그냥 받는다!!. => HttpServletRequest이런거
+
+
+int는 null이 안되기떄문 => Integer
+null 이랑 ""이거랑 다른거임!! 조심해야함!!!
+
+defaultvalue가 들어가면 required 필요없다!!.
