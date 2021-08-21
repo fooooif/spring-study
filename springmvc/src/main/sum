@@ -1,0 +1,20 @@
+#hello.springmvc 패키지와 그 하위 로그 레벨 설정
+#기본은 info 이다!!!
+#logging.level.root=info
+#로컬서버.
+#logging.level.hello.springmvc=trace
+#개발서버.
+#logging.level.hello.springmvc=debug
+#운영서버.
+logging.level.hello.springmvc=debug
+
+//@Controller 는 리턴에 view 네임이 반환된다.
+@RestController // 리턴에 string이 그대로 반환된다.
+
+@Slf4j
+private final Logger log = LoggerFactory.getLogger(getClass());
+@Slf4j쓰면 알아서 넣어줌.
+
+trace로그를 쓰지 않는데 먼저 더해
+준다 따라서 쓸모없는 연산을 수행
+log.trace("trace log = "+ name);
