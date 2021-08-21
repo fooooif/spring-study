@@ -8,15 +8,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @ServletComponentScan // 서블릿 자동등록
 @SpringBootApplication
-//요청 데이터
-//parameter =>get 방식만.
-//html form =>post 방식만.
-//message body => json,text,xml (post put patch).
-
-//응답 데이터.
-//텍스트.
-//html
-//json
 public class ServletApplication {
 
     public static void main(String[] args) {

@@ -7,3 +7,17 @@
 
 처음에 어노테이션에 있는 메타 어노테이션 정보를 가지고 핸들러를 찾는다.
 
+스프링 빈으로 등록되어있는 것중에 Controller나 RequsetMapping 어노테이션을 가지고 있으면
+RequestMappingHandlerMapping을 간다
+
+//요청 데이터
+//parameter =>get 방식만.
+//html form =>post 방식만.
+//message body => json,text,xml (post put patch).
+
+//응답 데이터.
+//텍스트.
+//html
+//json
+
+무조건 controller로 등록을 해야함!!! 빈으로 등록되어야함!!!
