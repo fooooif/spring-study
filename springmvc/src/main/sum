@@ -18,19 +18,42 @@ private final Logger log = LoggerFactory.getLogger(getClass());
 trace로그를 쓰지 않는데 먼저 더해
 준다 따라서 쓸모없는 연산을 수행
 log.trace("trace log = "+ name);
-
+***************************************************************************
 세가지 다 같은 거임
 단순타입이면 @RequestParam 생략가능하다!!!
 @RequestParam(name = "username") String memberName
 @RequestParam String username
 String username
-
+***************************************************************************
+1. Parameter로 들어올떄.
 단순타입 @RequestParam
 객체 @ModelAttribute
 하지만 argument resolver로 지정해둔 타입은 그냥 받는다!!. => HttpServletRequest이런거
+2. JSON으로 들어올때.
+    @RequestBody
+***************************************************************************
 
 
 int는 null이 안되기떄문 => Integer
 null 이랑 ""이거랑 다른거임!! 조심해야함!!!
 
 defaultvalue가 들어가면 required 필요없다!!.
+
+//반환이 HelloData가 json으로 바뀐다.
+    //json으로 응답해준다!!!!!!!!!!!!!!!!!!!!!!!!!.
+    //RequsetBody요청
+    //JSON요청 ->HTTP 메시지 컨버터 -> 객체
+    //ResponseBody응당
+    //객체 -> HTTP 메시지 컨버터 -> JSON응답
+
+
+응답에는
+1. 정적 리소스 html, css, js 를 제공
+
+2. 뷰템플릿 사용
+
+3. http 메시지 바디에 json
+
+//@Controller
+//@ResponseBody
+//@Controller+ @ResponseBody => @RestController
