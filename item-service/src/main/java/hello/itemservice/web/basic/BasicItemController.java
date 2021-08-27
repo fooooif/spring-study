@@ -62,7 +62,7 @@ public class BasicItemController {
 
         return "basic/item";
     }
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV3(@ModelAttribute Item item) {
         // model에 Item->item으로 담긴다 name value를 쓰지 않아도
         itemRepository.save(item);
@@ -70,7 +70,27 @@ public class BasicItemController {
 
         return "basic/item";
     }
+    //@ModelAttribute도 생략가능!
+    @PostMapping("/add")
+    public String addItemV4(Item item) {
+        itemRepository.save(item);
+        return "basic/item";
+    }
 
+    @GetMapping("/{itemId}/edit")
+    public String editForm(@PathVariable Long itemId, Model model) {
+        Item item = itemRepository.findById(itemId);
+        model.addAttribute("item", item);
+
+        return "basic/editForm";
+
+    }
+    @PostMapping("/{itemId}/edit")
+    public String edit(@PathVariable Long itemId, Model model) {
+
+        return "basic/item";
+
+    }
 
 
     @PostConstruct
