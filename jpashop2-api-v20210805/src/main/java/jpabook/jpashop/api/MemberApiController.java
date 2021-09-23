@@ -5,11 +5,18 @@ import jpabook.jpashop.service.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,7 +29,7 @@ public class MemberApiController {
     }
 
     @GetMapping("/api/v2/members")
-    public Result<Member> memberV2(){
+    public Result memberV2(){
         List<Member> members = memberService.findMembers();
         List<MemberDto> collect = members.stream()
                 .map(m -> new MemberDto(m.getName()))
@@ -31,7 +38,7 @@ public class MemberApiController {
         return new Result(collect);
     }
     @GetMapping("/api/v3/members")
-    public Result<Member> memberV3(){
+    public Result memberV3(){
         List<Member> members = memberService.findMembers();
         List<MemberDto> collect = members.stream()
                 .map(m -> new MemberDto(m.getName()))
@@ -39,9 +46,19 @@ public class MemberApiController {
 
         return new Result(collect);
     }
-    @Data
+
+    @GetMapping("/api/v4/members")
+    public void memberV4() {
+        List<Member> member = memberService.findMembers();
+        List<MemberDto> collect = member.stream().map(m -> new MemberDto(m.getName()))
+                .collect(Collectors.toList());
+        new Result(collect);
+
+
+    }
+        @Data
     @AllArgsConstructor
-    static class Result<T>{
+    static class Result<T> {
         private T data;
     }
     @Data

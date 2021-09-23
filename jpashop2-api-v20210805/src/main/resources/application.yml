@@ -16,4 +16,6 @@ spring:
 
 logging.level:
   org.hibernate.SQL: debug
+server:
+  port: 8081
 #  org.hibernate.type: trace
