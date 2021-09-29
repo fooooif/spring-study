@@ -89,6 +89,12 @@ public class OrderApiController {
 
         return orderQueryRepository.findAllByDto_flat();
     }
+
+    @GetMapping("api/aaaaa")
+    public Order aaaa() {
+        Order one = orderRepository.findOne(4L);
+        return one;
+    }
     //orderflat -> orderQuerydto로 변환시키기.
 //    @GetMapping("/api/v7/orders")
 //    public List<OrderQueryDto2> orderV6() {
