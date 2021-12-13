@@ -3,6 +3,7 @@ package jpabook.jpashop.repository;
 import jpabook.jpashop.domain.Order;
 
 import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -133,6 +134,7 @@ public class OrderRepository{
     //address 는 value 타입이기 떄문에 넣어줘도 된다!!!
     //query를 직접 짜서 select 한 부분이 적어진다.
     //fetch 조인이랑 다른 부분이다......
+    @Query
     public List<OrderSimpleQueryDto> findOrderDtos() {
         return em.createQuery(
                 "select new jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto(o.id,m.name,o.orderDate,o.status,d.address) from Order o " +
